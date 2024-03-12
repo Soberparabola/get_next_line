@@ -6,7 +6,7 @@
 /*   By: jordgarc <jordgarc@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:44:02 by jordgarc          #+#    #+#             */
-/*   Updated: 2024/03/07 18:31:29 by jordgarc         ###   ########.fr       */
+/*   Updated: 2024/03/12 18:10:36 by jordgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ char	*ft_strchr(char *s, int c)
 	return (0);
 }
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+char	*ft_substr(char *str, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*result;
 
 	i = 0;
-	if (!s)
+	if (!str)
 		return (0);
-	if (start > ft_strlen(s))
+	if (start > ft_strlen(str))
 	{
 		result = malloc(sizeof(char) * (1));
 		if (!result)
@@ -83,13 +83,13 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 		result[0] = '\0';
 		return (result);
 	}
-	if (ft_strlen(s) - start < len)
-		len = ft_strlen(s) - start;
+	if (ft_strlen(str) - start < len)
+		len = ft_strlen(str) - start;
 	result = malloc(sizeof(char) * (len + 1));
 	if (!result)
 		return (NULL);
-	while (start < ft_strlen(s) && i < len && s[start])
-		result[i++] = s[start++];
+	while (start < ft_strlen(str) && i < len && str[start])
+		result[i++] = str[start++];
 	result[i] = '\0';
 	return (result);
 }
