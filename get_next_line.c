@@ -6,7 +6,7 @@
 /*   By: jordgarc <jordgarc@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:43:04 by jordgarc          #+#    #+#             */
-/*   Updated: 2024/02/28 17:43:15 by jordgarc         ###   ########.fr       */
+/*   Updated: 2024/03/15 18:44:25 by jordgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,27 +56,27 @@ char	*new_line(char *storage)
 	return (line);
 }
 
-char	*readbuf(int fd, char *storage)
+char	*read_file(int fd, char *storage)
 {
-	int		rid;
+	int		read_bytes;
 	char	*buffer;
 
-	rid = 1;
+	read_bytes = 1;
 	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		return (ft_free(&storage));
 	buffer[0] = '\0';
-	while (rid > 0 && !ft_strchr(buffer, '\n'))
+	while (read_bytes > 0 && !ft_strchr(buffer, '\n'))
 	{
-		rid = read (fd, buffer, BUFFER_SIZE);
-		if (rid > 0)
+		read_bytes = read (fd, buffer, BUFFER_SIZE);
+		if (read_bytes > 0)
 		{
-			buffer[rid] = '\0';
+			buffer[read_bytes] = '\0';
 			storage = ft_strjoin(storage, buffer);
 		}
 	}
 	free(buffer);
-	if (rid == -1)
+	if (read_bytes == -1)
 		return (ft_free(&storage));
 	return (storage);
 }
@@ -89,7 +89,7 @@ char	*get_next_line(int fd)
 	if (fd < 0)
 		return (NULL);
 	if ((storage && !ft_strchr(storage, '\n')) || !storage)
-		storage = readbuf (fd, storage);
+		storage = read_file (fd, storage);
 	if (!storage)
 		return (NULL);
 	line = new_line(storage);
