@@ -6,7 +6,7 @@
 /*   By: jordgarc <jordgarc@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:43:29 by jordgarc          #+#    #+#             */
-/*   Updated: 2024/03/26 20:15:44 by jordgarc         ###   ########.fr       */
+/*   Updated: 2024/04/03 18:35:53 by jordgarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,10 @@
 #  define BUFFER_SIZE 32
 # endif
 
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
+char	*ft_free(char **str);
 size_t	ft_strlen(char *s);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strdup(char *s1);
 char	*ft_strchr(char *s, int c);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 char	*get_next_line(int fd);
-char	*ft_free(char **str);
 #endif
